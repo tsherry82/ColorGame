@@ -1,6 +1,7 @@
 let colors = generateRandomColor(6);
 
 const squares = document.querySelectorAll('.square');
+const h1 = document.querySelector('h1');
 let pickedColor = colors[Math.floor(Math.random() * colors.length)];
 let colorDisplay = document.getElementById('colorDisplay');
 let messageDisplay = document.getElementById('message')
@@ -16,7 +17,8 @@ squares.forEach((square, color) => {
         clickedColor = square.style.backgroundColor;
         if(clickedColor === pickedColor){
            messageDisplay.textContent = 'Correct';
-           changeColors(clickedColor)
+           changeColors(clickedColor);
+           h1.style.backgroundColor = clickedColor;
         } else {
             square.style.backgroundColor     = "#232323" 
             messageDisplay.textContent = 'Try again';
