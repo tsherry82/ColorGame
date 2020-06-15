@@ -4,7 +4,22 @@ const squares = document.querySelectorAll('.square');
 const h1 = document.querySelector('h1');
 let pickedColor = colors[Math.floor(Math.random() * colors.length)];
 let colorDisplay = document.getElementById('colorDisplay');
-let messageDisplay = document.getElementById('message')
+let messageDisplay = document.getElementById('message');
+const reset = document.querySelector('#reset');
+
+reset.addEventListener('click', () => {
+    reset.textContent = 'New Colors';
+    h1.style.backgroundColor = "#232323";
+    colors = generateRandomColor(6);
+    pickedColor = colors[Math.floor(Math.random() * colors.length)];
+    colorDisplay.textContent = pickedColor;
+
+squares.forEach((square, color) => {
+    const squareColor = colors[color]
+    square.style.backgroundColor = squareColor;
+})
+
+})
 
 colorDisplay.textContent = pickedColor;
 
@@ -15,14 +30,15 @@ squares.forEach((square, color) => {
     // add click event
     square.addEventListener('click', () => {
         clickedColor = square.style.backgroundColor;
-        if(clickedColor === pickedColor){
-           messageDisplay.textContent = 'Correct';
-           changeColors(clickedColor);
-           h1.style.backgroundColor = clickedColor;
+        if (clickedColor === pickedColor) {
+            messageDisplay.textContent = 'Correct';
+            changeColors(clickedColor);
+            h1.style.backgroundColor = clickedColor;
+            reset.textContent = 'Play again!'
         } else {
-            square.style.backgroundColor     = "#232323" 
+            square.style.backgroundColor = "#232323"
             messageDisplay.textContent = 'Try again';
-        } 
+        }
     })
 });
 
@@ -35,7 +51,7 @@ const changeColors = (newColor) => {
 function generateRandomColor(num) {
     // add num random colors to array
     const arr = [];
-    for(var i = 0; i < num; i++){
+    for (var i = 0; i < num; i++) {
         arr.push(randomColor())
     }
 
