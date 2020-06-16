@@ -40,10 +40,11 @@ hardBtn.addEventListener('click', () => {
 
 reset.addEventListener('click', () => {
     reset.textContent = 'New Colors';
-    h1.style.backgroundColor = "#steelBlue";
+    h1.style.backgroundColor = "steelBlue";
     colors = generateRandomColor(6);
     pickedColor = colors[Math.floor(Math.random() * colors.length)];
     colorDisplay.textContent = pickedColor;
+    messageDisplay.textContent = ''
 
     squares.forEach((square, color) => {
         const squareColor = colors[color]
