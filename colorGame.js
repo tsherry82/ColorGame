@@ -1,24 +1,54 @@
-let colors = generateRandomColor(6);
-
+let numSquares = 6
+let colors = generateRandomColor(numSquares);
 const squares = document.querySelectorAll('.square');
 const h1 = document.querySelector('h1');
 let pickedColor = colors[Math.floor(Math.random() * colors.length)];
 let colorDisplay = document.getElementById('colorDisplay');
 let messageDisplay = document.getElementById('message');
 const reset = document.querySelector('#reset');
+const easyBtn = document.getElementById('easy');
+const hardBtn = document.getElementById('hard');
+
+easyBtn.addEventListener('click', () => {
+    easyBtn.classList.add('selected');
+    hardBtn.classList.remove('selected');
+    numSquares = 3
+    colors = generateRandomColor(numSquares);
+    pickedColor = colors[Math.floor(Math.random() * colors.length)];
+    colorDisplay.textContent = pickedColor;
+    for (var i = 0; i < squares.length; i++) {
+        if (colors[i]) {
+            squares[i].style.backgroundColor = colors[i];
+        } else {
+            squares[i].style.display = 'none';
+        }
+    }
+});
+
+hardBtn.addEventListener('click', () => {
+    hardBtn.classList.add('selected');
+    easyBtn.classList.remove('selected');
+    numSquares = 6
+    colors = generateRandomColor(numSquares);
+    pickedColor = colors[Math.floor(Math.random() * colors.length)];
+    colorDisplay.textContent = pickedColor;
+    for (var i = 0; i < squares.length; i++) {
+            squares[i].style.backgroundColor = colors[i];
+            squares[i].style.display = 'block';
+    }
+});
 
 reset.addEventListener('click', () => {
     reset.textContent = 'New Colors';
-    h1.style.backgroundColor = "#232323";
+    h1.style.backgroundColor = "#steelBlue";
     colors = generateRandomColor(6);
     pickedColor = colors[Math.floor(Math.random() * colors.length)];
     colorDisplay.textContent = pickedColor;
 
-squares.forEach((square, color) => {
-    const squareColor = colors[color]
-    square.style.backgroundColor = squareColor;
-})
-
+    squares.forEach((square, color) => {
+        const squareColor = colors[color]
+        square.style.backgroundColor = squareColor;
+    })
 })
 
 colorDisplay.textContent = pickedColor;
