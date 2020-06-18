@@ -3,8 +3,8 @@ let colors = generateRandomColor(numSquares);
 const squares = document.querySelectorAll('.square');
 const h1 = document.querySelector('h1');
 let pickedColor = colors[Math.floor(Math.random() * colors.length)];
-let colorDisplay = document.getElementById('colorDisplay');
-let messageDisplay = document.getElementById('message');
+const colorDisplay = document.getElementById('colorDisplay');
+const messageDisplay = document.getElementById('message');
 const reset = document.querySelector('#reset');
 const mode = document.querySelectorAll('.mode');
 
